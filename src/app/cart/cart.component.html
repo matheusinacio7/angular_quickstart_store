@@ -1,0 +1,27 @@
+<h3>Shopping Cart</h3>
+
+<main>
+  <p>
+    <a [routerLink]="'/shipping'">Shipping Prices</a>
+  </p>
+  <ul *ngIf="products.length">
+    <li class="cart-item" *ngFor="let product of products">
+      <span>{{ product.name }}</span>
+      <span>{{ product.price | currency }}</span>
+    </li>
+  </ul>
+  <section *ngIf="products.length">
+    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+      <label for="name">
+        Name
+        <input id="name" type="text" formControlName="name" />
+      </label>
+      <label for="address">
+        Address
+        <input id="address" type="text" formControlName="address" />
+      </label>
+      <button class="button" type="submit">Purchase</button>
+    </form>
+  </section>
+  <p *ngIf="!products.length">Your cart is empty! ):</p>
+</main>
