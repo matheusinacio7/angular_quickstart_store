@@ -9,6 +9,8 @@ const distPath = path.join(__dirname, 'dist');
 
 app.use(express.static(distPath));
 
+// what
+
 app.get('*', (_req, res) => res.status(200).sendFile(path.join(distPath, 'index.html')));
 
 app.listen(port, () => {
